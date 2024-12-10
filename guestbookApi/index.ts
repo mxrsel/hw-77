@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fileDb from "./fileDb";
+import reviewsRouter from "./routers/reviews";
 
 const fs = require('fs');
 
@@ -8,6 +9,7 @@ const app = express();
 const port = 8000;
 
 app.use(cors());
+app.use('/reviews', reviewsRouter)
 app.use(express.json());
 
 
