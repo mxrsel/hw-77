@@ -18,11 +18,11 @@ const run = async () => {
     if(fs.existsSync('./reviews.json')) {
         await fileDb.init()
     } else {
-        fs.writeFileSync('./reviews.json', JSON.stringify([]));
+        fs.writeFile('./reviews.json', JSON.stringify([]));
     }
 
     app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
+        console.log(`Server is running on port: http://localhost:${port}`);
     })
 }
 

@@ -1,5 +1,6 @@
 import {promises as fs} from 'fs';
 import {GuestBook, GuestBookApi} from "./types";
+import crypto from 'crypto';
 
 const file = './reviews.json';
 let fileData: GuestBook[] = [];
@@ -8,7 +9,7 @@ const fileDb = {
     async init() {
         try{
             const content = await fs.readFile(file);
-            fileData = await JSON.parse(content.toString());
+            fileData = await JSON.parse(content.toString()) as GuestBook[];
         } catch (e) {
             console.error(e);
         }

@@ -1,33 +1,23 @@
 import React from 'react';
 import {GuestBook} from "../../types";
-import {apiUrl} from "../../globalConstants";
+import {Card} from "react-bootstrap";
+import {apiUrl} from "../../globalConstants.ts";
 
 interface ReviewItemProps {
     review: GuestBook
 }
 
 const ReviewItem: React.FC<ReviewItemProps> = ({review}) => {
-
-if(review.image) {
-    return apiUrl + '/' + review.image
-}
-
     return (
-        <div>
-            <div className='card'>
-                <div className='card-header'>
-                    <img className='card-img' src={review.image}
-                    alt='review image'
-                    />
-                    <div className='card-title'>
-                        {review.name}
-                    </div>
-                    <div className='card-text'>
-                        {review.description}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Card style={{ width: '18rem', marginRight: '10px'}}>
+            {review.image && <Card.Img variant="top" style={{height: '200px'}} src={`${apiUrl}/${review.image}`} />}
+            <Card.Body>
+                <Card.Title>{review.name}</Card.Title>
+                <Card.Text>
+                    {review.description}
+                </Card.Text>
+            </Card.Body>
+        </Card>
     );
 };
 

@@ -10,7 +10,7 @@ const Reviews = () => {
     const loading = useAppSelector((state) => state.reviews.isLoading);
 
     useEffect(() => {
-        setTimeout(() => dispatch(fetchReviews()), 3000);
+       dispatch(fetchReviews());
     }, [dispatch]);
 
     return (
@@ -21,7 +21,9 @@ const Reviews = () => {
                 {loading ? <Spinner />
                     :
                     reviews.map((review) => (
+                        <div className='d-flex justify-content-between'>
                         <ReviewItem review={review} key={review.id} />
+                        </div>
                     ))
                 }
             </>
