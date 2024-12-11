@@ -10,9 +10,9 @@ const imageStorage = multer.diskStorage({
         await fs.mkdir(destDIr, {recursive: true});
         cb(null, destDIr);
     },
-    filename: (req, file, cb) => {
+    filename: (_req, file, cb) => {
         const ex = path.extname(file.originalname);
-        cb(null, 'images' + randomUUID() + ex);
+        cb(null, '/' + randomUUID() + ex);
     }
 });
 

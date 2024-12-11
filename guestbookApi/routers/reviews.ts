@@ -10,15 +10,11 @@ reviewsRouter.get('/', async(req, res) => {
 })
 
 reviewsRouter.post('/', imagesUpload.single('image'), async(req, res) => {
-    if(!req.body.description) {
-        res.status(400).send({error: 'Fill in this area!'});
-        return
-    }
 
     const review: GuestBookApi = {
-        name: req.body.name,
+        name: req.body.name || 'anonymous',
         description: req.body.description,
-        image: req.file ? req.file.filename : null
+        image: req.file ? 'images' + req.file.filename : null
     };
 
     const createdReviews = await fileDb.createReview(review);

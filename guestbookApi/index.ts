@@ -10,6 +10,7 @@ const port = 8000;
 
 app.use(cors());
 app.use('/reviews', reviewsRouter)
+app.use(express.static('public'));
 app.use(express.json());
 
 
